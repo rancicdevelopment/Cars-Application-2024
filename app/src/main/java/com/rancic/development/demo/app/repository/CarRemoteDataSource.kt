@@ -2,11 +2,12 @@ package com.rancic.development.demo.app.repository
 
 import com.google.gson.Gson
 import com.rancic.development.demo.app.BuildConfig
-import com.rancic.development.demo.app.api.CarApi
+
 import com.rancic.development.demo.app.common.Error
 import com.rancic.development.demo.app.common.Result
-import com.rancic.development.demo.app.model.Car
-import com.rancic.development.demo.app.model.CarResponse
+import com.rancic.development.demo.app.remote.api.CarApi
+import com.rancic.development.demo.app.remote.model.Car
+import com.rancic.development.demo.app.remote.model.CarResponse
 import com.rancic.development.demo.app.util.SharedPref
 import retrofit2.HttpException
 import java.io.IOException

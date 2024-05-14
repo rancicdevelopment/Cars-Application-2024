@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.rancic.development.demo.app.R
-import com.rancic.development.demo.app.model.Car
+import com.rancic.development.demo.app.remote.model.Car
 import com.rancic.development.demo.app.ui.theme.DemoAppTheme
 
 @Composable

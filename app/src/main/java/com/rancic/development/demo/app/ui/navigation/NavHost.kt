@@ -7,7 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.rancic.development.demo.app.model.Car
+import com.rancic.development.demo.app.remote.model.Car
+import com.rancic.development.demo.app.ui.screen.addcarscreen.AddCarScreen
 import com.rancic.development.demo.app.ui.screen.detailscreen.DetailScreen
 import com.rancic.development.demo.app.ui.screen.home.HomeScreen
 
@@ -19,7 +20,7 @@ private const val CARS_ARG = "cars"
 fun MyAppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = NavigationItem.Home.route,
+    startDestination: String = NavigationItem.AddNewCar.route,
 ) {
     NavHost(
         modifier = modifier,
@@ -29,10 +30,13 @@ fun MyAppNavHost(
         composable(
             route = NavigationItem.Home.route
         ) {
-            HomeScreen(navController = {
-                navController.currentBackStackEntry?.savedStateHandle?.set(CARS_ARG, it)
-                navController.navigate(State.DETAILS.name)
-            })
+            HomeScreen(
+                navController = navController,
+                selectedCar = {
+                    navController.currentBackStackEntry?.savedStateHandle?.set(CARS_ARG, it)
+                    navController.navigate(State.DETAILS.name)
+                }
+            )
         }
 
         composable(
@@ -43,14 +47,11 @@ fun MyAppNavHost(
                 DetailScreen(navController = navController, it)
             }
         }
+        composable(
+            route = NavigationItem.AddNewCar.route
+        ){
+            AddCarScreen(navController = navController)
+        }
+
     }
 }
-
-//@Composable
-//inline fun <reified T : ViewModel> NavBackStackEntry.sharedViewModel(navController: NavController): T {
-//    val navGraphRoute = destination.parent?.route ?: return viewModel()
-//    val parentEntry = remember(this) {
-//        navController.getBackStackEntry(navGraphRoute)
-//    }
-//    return viewModel(parentEntry)
-//}

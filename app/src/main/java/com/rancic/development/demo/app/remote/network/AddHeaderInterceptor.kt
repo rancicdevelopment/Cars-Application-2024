@@ -1,4 +1,4 @@
-package com.rancic.development.demo.app.network
+package com.rancic.development.demo.app.remote.network
 
 import okhttp3.Interceptor
 import okhttp3.Request

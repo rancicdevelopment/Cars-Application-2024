@@ -3,8 +3,8 @@ package com.rancic.development.demo.app.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.rancic.development.demo.app.BuildConfig
-import com.rancic.development.demo.app.api.CarApi
-import com.rancic.development.demo.app.network.AddHeaderInterceptor
+import com.rancic.development.demo.app.remote.api.CarApi
+import com.rancic.development.demo.app.remote.network.AddHeaderInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

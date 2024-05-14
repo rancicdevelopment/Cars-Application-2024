@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rancic.development.demo.app.common.Error
 import com.rancic.development.demo.app.common.Result
-import com.rancic.development.demo.app.model.Car
+import com.rancic.development.demo.app.remote.model.Car
 import com.rancic.development.demo.app.repository.CarRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

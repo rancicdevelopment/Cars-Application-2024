@@ -16,18 +16,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.rancic.development.demo.app.common.Result
-import com.rancic.development.demo.app.model.Car
+import com.rancic.development.demo.app.remote.model.Car
 import com.rancic.development.demo.app.ui.components.CarItem
 import com.rancic.development.demo.app.ui.components.ChipGroup
 import com.rancic.development.demo.app.ui.components.model.Category
 import com.rancic.development.demo.app.ui.components.model.CategoryType
+import com.rancic.development.demo.app.ui.navigation.NavigationItem
 import com.rancic.development.demo.app.viewmodel.CarViewModel
 
 
 @Composable
 fun HomeScreen(
-    navController: (Car) -> Unit,
+    navController : NavController,
+    selectedCar: (Car) -> Unit,
     viewModel: CarViewModel = hiltViewModel()
 ) {
     val state = viewModel.carsFlow.collectAsState()
@@ -82,7 +85,7 @@ fun HomeScreen(
                     LazyColumn(modifier = Modifier.padding(horizontal = 8.dp)) {
                         items(items = list) { car ->
                             CarItem(car = car) {
-                                navController(car)
+                                selectedCar(car)
                             }
                         }
                     }

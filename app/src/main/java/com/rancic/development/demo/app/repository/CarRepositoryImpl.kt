@@ -2,7 +2,7 @@ package com.rancic.development.demo.app.repository
 
 import com.rancic.development.demo.app.common.Error
 import com.rancic.development.demo.app.common.Result
-import com.rancic.development.demo.app.model.Car
+import com.rancic.development.demo.app.remote.model.Car
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

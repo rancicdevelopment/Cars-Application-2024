@@ -8,7 +8,7 @@
 * API - Retrofit library
 * Model-View-ViewModel (MVVM) software design pattern
 * Dependency Injection - Hilt
-* 
+* Navigation - NavHostController
 
 # API Documentation #
 

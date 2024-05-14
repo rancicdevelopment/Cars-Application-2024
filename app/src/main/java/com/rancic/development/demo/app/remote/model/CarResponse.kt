@@ -1,4 +1,4 @@
-package com.rancic.development.demo.app.model
+package com.rancic.development.demo.app.remote.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

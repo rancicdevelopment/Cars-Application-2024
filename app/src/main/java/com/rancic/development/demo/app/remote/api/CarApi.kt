@@ -1,6 +1,6 @@
-package com.rancic.development.demo.app.api
+package com.rancic.development.demo.app.remote.api
 
-import com.rancic.development.demo.app.model.CarResponse
+import com.rancic.development.demo.app.remote.model.CarResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
