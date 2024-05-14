@@ -10,7 +10,7 @@ class AddHeaderInterceptor : Interceptor {
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder: Request.Builder = chain.request().newBuilder()
-       // builder.addHeader("Content-Type", "application/json")
+        //builder.addHeader("Content-Type", "application/json")
         return chain.proceed(builder.build())
     }
 }

@@ -19,7 +19,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
         multiDexEnabled = true
-        buildConfigField("String","BASE_URL","\"https://irancic.bitbucket.io/\"")
+        buildConfigField("String", "BASE_URL", "\"https://irancic.bitbucket.io/\"")
         buildConfigField("String", "OFFLINE_ERROR_MSG", "\": No address associated with h\"")
     }
 
@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.material)
     implementation(libs.androidx.browser)
+
     // Navigation
     implementation(libs.androidx.navigation.compose)
 
@@ -83,6 +84,7 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     implementation(libs.hilt.android.compiler)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     kapt(libs.hilt.android.compiler)
     kapt(libs.androidx.hilt.compiler)
 

@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -33,7 +33,10 @@ import com.rancic.development.demo.app.util.AppUtil.openTab
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(car: Car, navController: NavHostController) {
+fun DetailScreen(
+    navController: NavHostController,
+    car: Car,
+) {
     val context = LocalContext.current
     val scrollState = rememberScrollState()
 
@@ -50,7 +53,7 @@ fun DetailScreen(car: Car, navController: NavHostController) {
                 },
                 navigationIcon = {
                     Icon(
-                        imageVector = Icons.Default.ArrowBack,
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "back",
                         modifier = Modifier.clickable {
                             navController.popBackStack()
@@ -69,8 +72,7 @@ fun DetailScreen(car: Car, navController: NavHostController) {
             Image(
                 painter = painter,
                 contentDescription = car.title,
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 contentScale = ContentScale.Crop
             )
             Text(
