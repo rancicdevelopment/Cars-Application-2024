@@ -21,14 +21,16 @@ import com.rancic.development.demo.app.common.Result
 import com.rancic.development.demo.app.remote.model.Car
 import com.rancic.development.demo.app.ui.components.CarItem
 import com.rancic.development.demo.app.ui.components.ChipGroup
+import com.rancic.development.demo.app.ui.components.ClassicCircularProgressBar
 import com.rancic.development.demo.app.ui.components.model.Category
 import com.rancic.development.demo.app.ui.components.model.CategoryType
+import com.rancic.development.demo.app.ui.screen.nofilesscreen.NoFilesScreen
 import com.rancic.development.demo.app.viewmodel.CarViewModel
 
 
 @Composable
 fun HomeScreen(
-    navController : NavController,
+    navController: NavController,
     selectedCar: (Car) -> Unit,
     viewModel: CarViewModel = hiltViewModel()
 ) {
@@ -59,43 +61,40 @@ fun HomeScreen(
     }
 
 
+    val categories = listOf(
+        Category(0, CategoryType.ALL.name.lowercase()),
+        Category(1, CategoryType.SUV.name.lowercase()),
+        Category(2, CategoryType.HATCHBACK.name.lowercase())
+    )
 
+    var selectedItem by rememberSaveable { mutableStateOf(categories[0]) }
 
-            val categories = listOf(
-                Category(0, CategoryType.ALL.name.lowercase()),
-                Category(1, CategoryType.SUV.name.lowercase()),
-                Category(2, CategoryType.HATCHBACK.name.lowercase())
-            )
-
-            var selectedItem by rememberSaveable { mutableStateOf(categories[0]) }
-
-            Box(
-                Modifier.fillMaxSize()
-            ) {
-                Column {
-                    ChipGroup(categories, selectedItem) {
-                        selectedItem = it
-                        viewModel.getCars(it.name)
-                    }
-                    if (loading) {
-                        // ClassicCircularProgressBar()
-                    } else if (emptylist) {
-                        // NoFilesScreen()
-                    } else {
-                        state.value?.data?.let { list: List<Car> ->
-                            LazyColumn(modifier = Modifier.padding(horizontal = 8.dp)) {
-                                items(items = list) { car ->
-                                    CarItem(car = car) {
-                                        selectedCar(car)
-                                    }
-                                }
+    Box(
+        Modifier.fillMaxSize()
+    ) {
+        Column {
+            ChipGroup(categories, selectedItem) {
+                selectedItem = it
+                viewModel.getCars(it.name)
+            }
+            if (loading) {
+                ClassicCircularProgressBar()
+            } else if (emptylist) {
+                NoFilesScreen()
+            } else {
+                state.value?.data?.let { list: List<Car> ->
+                    LazyColumn(modifier = Modifier.padding(horizontal = 8.dp)) {
+                        items(items = list) { car ->
+                            CarItem(car = car) {
+                                selectedCar(car)
                             }
                         }
-
+                    }
                 }
+
             }
         }
-
+    }
 
 
 }

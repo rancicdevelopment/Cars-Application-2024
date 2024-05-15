@@ -2,4 +2,5 @@
     <string name="app_name">DemoApp</string>
     <string name="open_for_more">Open for more</string>
     <string name="label_filters">Filter</string>
+    <string name="no_items_here">No items here</string>
 </resources>
