@@ -15,7 +15,7 @@
 
 Car list:
 
-https://irancic.bitbucket.io/cars.json
+https://irancic.bitbucket.io/api/cars/all/cars.json
 
 
 ## End
