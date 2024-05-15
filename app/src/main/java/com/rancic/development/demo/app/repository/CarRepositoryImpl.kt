@@ -14,11 +14,10 @@ class CarRepositoryImpl @Inject constructor(
     private val ioDispatcher: CoroutineDispatcher
 ) : CarRepository {
 
-
-    override suspend fun allCars(): Flow<Result<List<Car>>> {
+    override suspend fun getCars(category: String): Flow<Result<List<Car>>> {
         return flow {
             emit(Result.loading())
-            val result = dataSource.load()
+            val result = dataSource.getCars(category)
             if (result.status == Result.Status.SUCCESS) {
                 result.data?.let {
                     val userResponse = it

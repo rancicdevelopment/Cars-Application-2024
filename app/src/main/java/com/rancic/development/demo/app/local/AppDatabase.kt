@@ -9,7 +9,8 @@ import com.rancic.development.demo.app.local.entity.CarEntity
     entities = [
         CarEntity::class,
         /* some another entity class, ... */
-    ], version = AppDatabase.DB_VERSION
+    ],
+    version = AppDatabase.DB_VERSION
 )
 abstract class AppDatabase : RoomDatabase() {
 

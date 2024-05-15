@@ -6,6 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface CarRepository {
 
-    suspend fun allCars(): Flow<Result<List<Car>>>
+    suspend fun getCars(category: String): Flow<Result<List<Car>>>
 
 }

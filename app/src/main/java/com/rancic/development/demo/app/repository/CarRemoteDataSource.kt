@@ -17,14 +17,11 @@ class CarRemoteDataSource @Inject constructor(
     private val api: CarApi,
     private val sharedPref: SharedPref
 ) {
-    suspend fun load(): Result<List<Car>> {
+
+    suspend fun getCars(category: String): Result<List<Car>> {
         return try {
-            val result = api.getCars()
+            val result = api.getCars(category)
 
-            // save to offline
-            val jsonStr = Gson().toJson(result)
-
-            // sharedPref.wr(projectId = projectId, jsonStr)
 
             Result.success(result.data)
         } catch (e: Exception) {

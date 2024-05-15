@@ -9,6 +9,7 @@
 * Model-View-ViewModel (MVVM) software design pattern
 * Dependency Injection - Hilt
 * Navigation - NavHostController
+* Room
 
 # API Documentation #
 

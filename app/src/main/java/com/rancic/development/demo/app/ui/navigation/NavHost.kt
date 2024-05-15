@@ -20,7 +20,7 @@ private const val CARS_ARG = "cars"
 fun MyAppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = NavigationItem.AddNewCar.route,
+    startDestination: String = NavigationItem.Home.route,
 ) {
     NavHost(
         modifier = modifier,

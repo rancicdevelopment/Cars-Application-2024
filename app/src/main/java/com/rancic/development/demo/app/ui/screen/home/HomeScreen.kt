@@ -23,7 +23,6 @@ import com.rancic.development.demo.app.ui.components.CarItem
 import com.rancic.development.demo.app.ui.components.ChipGroup
 import com.rancic.development.demo.app.ui.components.model.Category
 import com.rancic.development.demo.app.ui.components.model.CategoryType
-import com.rancic.development.demo.app.ui.navigation.NavigationItem
 import com.rancic.development.demo.app.viewmodel.CarViewModel
 
 
@@ -59,12 +58,7 @@ fun HomeScreen(
         else -> {}
     }
 
-    if (loading) {
-        // ClassicCircularProgressBar()
-    } else if (emptylist) {
-        // NoFilesScreen()
-    } else {
-        state.value?.data?.let { list: List<Car> ->
+
 
 
             val categories = listOf(
@@ -81,19 +75,27 @@ fun HomeScreen(
                 Column {
                     ChipGroup(categories, selectedItem) {
                         selectedItem = it
+                        viewModel.getCars(it.name)
                     }
-                    LazyColumn(modifier = Modifier.padding(horizontal = 8.dp)) {
-                        items(items = list) { car ->
-                            CarItem(car = car) {
-                                selectedCar(car)
+                    if (loading) {
+                        // ClassicCircularProgressBar()
+                    } else if (emptylist) {
+                        // NoFilesScreen()
+                    } else {
+                        state.value?.data?.let { list: List<Car> ->
+                            LazyColumn(modifier = Modifier.padding(horizontal = 8.dp)) {
+                                items(items = list) { car ->
+                                    CarItem(car = car) {
+                                        selectedCar(car)
+                                    }
+                                }
                             }
                         }
-                    }
 
                 }
             }
         }
 
 
-    }
+
 }

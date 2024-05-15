@@ -7,8 +7,8 @@ import retrofit2.http.Path
 
 interface CarApi {
 
-    @GET("/cars.json")
-    suspend fun getCars(): CarResponse
+    @GET("api/cars/{category}/cars.json")
+    suspend fun getCars(@Path("category") category: String): CarResponse
 
 
 }
