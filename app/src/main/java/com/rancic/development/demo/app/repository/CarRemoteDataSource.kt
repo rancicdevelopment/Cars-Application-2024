@@ -43,11 +43,11 @@ class CarRemoteDataSource @Inject constructor(
             } else {
                 val offline = e.localizedMessage!!.contains(BuildConfig.OFFLINE_ERROR_MSG)
                 if (offline) {
-                    val localResult = carDao.getCars(category = category)
+                    val localResult = carDao.getCars(category)
 
-                    val toRemote = localResult.map { carEntity -> CarMapper.fromLocal(carEntity) }
+                    val list = localResult.map { carEntity -> CarMapper.fromLocal(carEntity) }
 
-                    Result.success(toRemote)
+                    Result.success(list)
                 } else {
                     Result.error(Error(message = e.localizedMessage))
                 }
