@@ -10,5 +10,4 @@ interface CarApi {
     @GET("api/cars/{category}/cars.json")
     suspend fun getCars(@Path("category") category: String): CarResponse
 
-
 }

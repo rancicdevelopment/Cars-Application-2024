@@ -10,18 +10,17 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
 class CarRepositoryImpl @Inject constructor(
-    private val dataSource: CarRemoteDataSource,
+    private val carRemoteDataSource: CarRemoteDataSource,
     private val ioDispatcher: CoroutineDispatcher
 ) : CarRepository {
 
     override suspend fun getCars(category: String): Flow<Result<List<Car>>> {
         return flow {
             emit(Result.loading())
-            val result = dataSource.getCars(category)
+            val result = carRemoteDataSource.getCars(category)
             if (result.status == Result.Status.SUCCESS) {
-                result.data?.let {
-                    val userResponse = it
-                    emit(Result.success(userResponse))
+                result.data?.let { list ->
+                    emit(Result.success(list))
                 }
             } else if (result.status == Result.Status.ERROR) {
                 emit(

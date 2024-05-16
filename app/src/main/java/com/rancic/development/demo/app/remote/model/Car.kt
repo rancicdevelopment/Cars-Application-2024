@@ -4,24 +4,27 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 
-class Car : Serializable {
+data class Car(
 
     @SerializedName("id")
-    val id: Int? = null
+    var id: Int? = null,
 
     @SerializedName("title")
-    var title: String? = null
+    var title: String? = null,
 
     @SerializedName("description")
-    var description: String? = null
+    var description: String? = null,
 
     @SerializedName("year")
-    var year: Int? = null
+    var year: Int? = null,
 
     @SerializedName("urlToImage")
-    var urlToImage: String? = null
+    var urlToImage: String? = null,
 
     @SerializedName("url")
-    var url: String? = null
+    var url: String? = null,
 
-}
+    @SerializedName("category")
+    val category: String? = null
+
+) : Serializable

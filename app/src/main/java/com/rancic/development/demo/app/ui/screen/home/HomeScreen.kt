@@ -30,7 +30,7 @@ import com.rancic.development.demo.app.viewmodel.CarViewModel
 
 @Composable
 fun HomeScreen(
-    navController: NavController,
+    navController:  NavController,
     selectedCar: (Car) -> Unit,
     viewModel: CarViewModel = hiltViewModel()
 ) {
@@ -79,9 +79,9 @@ fun HomeScreen(
             }
             if (loading) {
                 ClassicCircularProgressBar()
-            } else if (emptylist) {
+            } /*else if (emptylist) {
                 NoFilesScreen()
-            } else {
+            }*/ else {
                 state.value?.data?.let { list: List<Car> ->
                     LazyColumn(modifier = Modifier.padding(horizontal = 8.dp)) {
                         items(items = list) { car ->

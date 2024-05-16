@@ -80,7 +80,7 @@ fun CarsItemPreview() {
             color = MaterialTheme.colorScheme.background
         ) {
             CarItem(
-                car = Car()
+                car = Car(category = "suv")
             ) {}
         }
     }

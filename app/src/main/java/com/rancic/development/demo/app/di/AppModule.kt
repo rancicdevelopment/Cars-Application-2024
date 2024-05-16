@@ -3,6 +3,7 @@ package com.rancic.development.demo.app.di
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
+import com.rancic.development.demo.app.local.dao.CarDao
 import com.rancic.development.demo.app.repository.CarRemoteDataSource
 import com.rancic.development.demo.app.repository.CarRepository
 import com.rancic.development.demo.app.repository.CarRepositoryImpl
@@ -22,8 +23,8 @@ object AppModule {
     @Singleton
     @Provides
     fun provideTicketRepository(
-        dataSource: CarRemoteDataSource, ioDispatcher: CoroutineDispatcher
-    ) : CarRepository = CarRepositoryImpl(dataSource, ioDispatcher)
+        carRemoteDataSource: CarRemoteDataSource, carDao: CarDao, ioDispatcher: CoroutineDispatcher
+    ): CarRepository = CarRepositoryImpl(carRemoteDataSource, ioDispatcher)
 
     @Singleton
     @Provides

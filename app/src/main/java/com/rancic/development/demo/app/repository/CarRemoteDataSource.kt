@@ -5,23 +5,28 @@ import com.rancic.development.demo.app.BuildConfig
 
 import com.rancic.development.demo.app.common.Error
 import com.rancic.development.demo.app.common.Result
+import com.rancic.development.demo.app.local.dao.CarDao
+import com.rancic.development.demo.app.mapping.CarMapper
 import com.rancic.development.demo.app.remote.api.CarApi
 import com.rancic.development.demo.app.remote.model.Car
 import com.rancic.development.demo.app.remote.model.CarResponse
-import com.rancic.development.demo.app.util.SharedPref
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
 class CarRemoteDataSource @Inject constructor(
-    private val api: CarApi,
-    private val sharedPref: SharedPref
+    private val carApi: CarApi,
+    private val carDao: CarDao
 ) {
 
     suspend fun getCars(category: String): Result<List<Car>> {
         return try {
-            val result = api.getCars(category)
+            val result = carApi.getCars(category)
 
+            result.data?.let { list ->
+                val localList = list.map { car -> CarMapper.fromRemote(car) }
+                carDao.insertAll(localList)
+            }
 
             Result.success(result.data)
         } catch (e: Exception) {
@@ -38,13 +43,11 @@ class CarRemoteDataSource @Inject constructor(
             } else {
                 val offline = e.localizedMessage!!.contains(BuildConfig.OFFLINE_ERROR_MSG)
                 if (offline) {
-                    val jsonStr = sharedPref.token()
-                    if (jsonStr == null) {
-                        Result.success(listOf())
-                    } else {
-                        val result = Gson().fromJson(jsonStr, CarResponse::class.java)
-                        Result.success(result.data)
-                    }
+                    val localResult = carDao.getCars(category = category)
+
+                    val toRemote = localResult.map { carEntity -> CarMapper.fromLocal(carEntity) }
+
+                    Result.success(toRemote)
                 } else {
                     Result.error(Error(message = e.localizedMessage))
                 }
