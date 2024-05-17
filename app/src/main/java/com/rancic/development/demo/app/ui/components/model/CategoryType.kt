@@ -1,7 +1,7 @@
 package com.rancic.development.demo.app.ui.components.model
 
 enum class CategoryType {
-    ALL,
+    PICKUP_TRUCK,
     SUV,
     HATCHBACK
 }

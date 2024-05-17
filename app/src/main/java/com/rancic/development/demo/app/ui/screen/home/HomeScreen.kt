@@ -24,7 +24,6 @@ import com.rancic.development.demo.app.ui.components.ChipGroup
 import com.rancic.development.demo.app.ui.components.ClassicCircularProgressBar
 import com.rancic.development.demo.app.ui.components.model.Category
 import com.rancic.development.demo.app.ui.components.model.CategoryType
-import com.rancic.development.demo.app.ui.screen.nofilesscreen.NoFilesScreen
 import com.rancic.development.demo.app.viewmodel.CarViewModel
 
 
@@ -62,7 +61,7 @@ fun HomeScreen(
 
 
     val categories = listOf(
-        Category(0, CategoryType.ALL.name.lowercase()),
+        Category(0, CategoryType.PICKUP_TRUCK.name.lowercase()),
         Category(1, CategoryType.SUV.name.lowercase()),
         Category(2, CategoryType.HATCHBACK.name.lowercase())
     )

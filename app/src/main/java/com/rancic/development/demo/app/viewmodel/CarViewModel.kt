@@ -6,9 +6,7 @@ import com.rancic.development.demo.app.common.Error
 import com.rancic.development.demo.app.common.Result
 import com.rancic.development.demo.app.remote.model.Car
 import com.rancic.development.demo.app.repository.CarRepository
-import com.rancic.development.demo.app.ui.components.model.Category
 import com.rancic.development.demo.app.ui.components.model.CategoryType
-import com.rancic.development.demo.app.ui.navigation.NavigationItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +24,7 @@ class CarViewModel @Inject constructor(
     val carsFlow: StateFlow<Result<List<Car>>?> = _carsFlow
 
     init {
-        getCars(CategoryType.ALL.name.lowercase())
+        getCars(CategoryType.PICKUP_TRUCK.name.lowercase())
     }
 
 
